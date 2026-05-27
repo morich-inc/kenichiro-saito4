@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>齊藤 健一郎 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>齊藤 健一郎 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社マネーフォワード</a>
+  <a href="#k2">2. 株式会社XAION DATA（ザイオンデータ）</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">マーケティング（オープンポジション）</span><span class="badge badge-blue">東証プライム上場</span></div>
+  <div class="co-name">株式会社マネーフォワード</div>
+  <div class="co-url"><a href="https://corp.moneyforward.com/" target="_blank">https://corp.moneyforward.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区芝浦3-1-21 msb Tamachi 田町ステーションタワーS 21F</td></tr><tr><th>設立</th><td>2012年5月</td></tr><tr><th>従業員数</th><td>2,800名超</td></tr><tr><th>上場区分</th><td>東証プライム上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>日本でNo.1の「お金のプラットフォーム」として選ばれることを目指しています。</li><li>子育てをしているメンバーも多く、周囲の理解も十分にあるとともに、リモートワークや時短勤務、産休・育休制度など、より柔軟な働き方をできるような環境づくりをされています！</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2012年5月に「お金を前へ。人生をもっと前へ。」というミッションのもと設立され、個人のお金に関する悩みと企業のバックオフィス業務の変革に取り組む国内Fintechリーディングカンパニーです。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2012年5月に「お金を前へ。人生をもっと前へ。」というミッションのもと設立され、個人のお金に関する悩みと企業のバックオフィス業務の変革に取り組む国内Fintechリーディングカンパニーです。</p><p>創業から12年で東証プライム上場、従業員2,800名超の規模へ成長し、個人向け「マネーフォワード ME」や法人向け「マネーフォワード クラウド」を中心に、個人・法人双方の課題解決を推進。2026年2月には会計ソフトのクラウド移行を後押しするキャンペーンを開始し、AI時代を見据えた中小・中堅企業のバックオフィス基盤構築を支援。2026年3月にはマネーフォワードエックスと南都銀行が法人向けデジタルサービスの共同開発に合意するなど、地域金融機関との連携も加速。15社を超える子会社・グループ会社を通じた事業拡大やM&Aによる非連続成長にも積極的で、上場企業としての安定性とスタートアップ的な挑戦環境を併せ持つ組織です。</p><p>Fintech、SaaS、AI、金融サービスの交差点で、社会的意義の高い「お金の課題解決」に大きな裁量を持って挑戦できる環境です。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 マーケティング（オープンポジション）</div>
+          <div class="job-preview">ARR 129億円、YoY 40%増の急成長を支えるマーケティング業務</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【事業概要】</strong><br>マネーフォワードは2012年5月に設立し「SaaS×Fintech」領域でサービスを展開し続けてきました。『お金を前へ。人生をもっと前へ。』をミッションに、『すべての人の、「お金のプラットフォーム」になる。』をビジョンに掲げ、様々なプロダクト開発を続けながら、事業領域を拡大しています。マネーフォワードビジネスセグメントは、マネーフォワードグループ全体の売上の6割を占める、「バックオフィス向けSaaS」事業を担当する組織です。</p><p><strong>【職務内容】</strong><br>顧客規模やプロダクト領域によって本部が分かれており、それぞれに対して最適なソリューションを提供しております。<br>※ご経験やスキルを加味し、選考ポジションはご案内させていただきます。</p><p><strong>（具体的なポジション）</strong><br>・グロースマーケター<br>・デジタルマーケター<br>・イベントマーケター<br>・CRMマーケター<br>・コンテンツマーケター<br>・WEBディレクター</p><p><strong>（配属可能性本部）</strong><br>・横断マーケティング本部<br>・HRマーケティング・インサイドセールス本部<br>・ERPマーケティング本部<br>・SMB本部　マーケティング部<br>・事業推進本部　士業パートナーマーケティング部</p><p><strong>【マネーフォワードマーケティングポジションの魅力】</strong></p><p><strong>■事業成長を牽引する、高精度の投資判断と意思決定</strong><br>ARR 129億円、YoY 40%増の急成長を支えるマーケティング予算やリソースの投資判断を自らリードしていただきます。本部長直下でLTV最大化に向けた戦略立案から深く関与できるため、単なる「施策の実行者」に留まらず、事業成長のレバーを自ら動かすダイナミックな意思決定を経験できる環境です。</p><p><strong>■コンパウンドSaaSならではの高度な専門性と網羅性</strong><br>バックオフィス全域をカバーする「複数プロダクト」の膨大なデータを武器にした戦略立案が最大の特徴です。手法に囚われない統合マーケティングに加え、プロダクト間シナジーを活かしたUX設計やデータ基盤構築など、各職種の専門性を深めつつ、他社では経験し得ない多角的なスキルを磨き上げることが可能です。</p><p><strong>■社会構造の変革に直結する、本質的な顧客価値提供</strong><br>インボイス制度やDX推進という国策級の追い風を受け、日本の全事業者の「お金のプラットフォーム」を創り上げる社会的意義の大きなフェーズです。新規から成熟プロダクトまで多様なフェーズが混在しているため、常に新しい市場を切り拓く当事者意識を持ちながら、自身の仕事が社会インフラを支えている確かな実感を両立できます。</p><p><strong>■多種多様なドメインで描く、自分らしいキャリア</strong><br>インハウス組織としてPdMや開発、セールスと日常的に密接な連携を行っています。マーケティングを「事業成長のドライバー」と定義する文化が浸透しているため、担当領域の枠を超えた広範な経営視座が養われます。実際にマーケ出身の事業責任者も多く、将来的に事業企画や経営へとキャリアを拡張できる土壌が整っています。</p><p><span class='tag tag-must'>MUST</span></p><ul><li>事業会社または代理店におけるマーケティング実務経験（目安2年以上）</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>BtoB SaaS領域、または金融・会計領域でのマーケティング経験</li><li>CRM/MAツール（Salesforce, Marketo, HubSpot等）を活用した仕組み化の経験</li><li>特定の専門領域（デジタル広告、イベント、SEO、コンテンツ等）における深い知見</li><li>マネジメント、またはリーダーとしてチームを牽引した経験</li><li>自らの施策によって、事業数値（売上・商談数・リード数等）を動かした実績</li><li>社内外のステークホルダーを巻き込み、プロジェクトを推進した経験</li><li>セミナー、自社カンファレンス、イベント、展示会等の企画運営経験（オンラインオフライン問わず）</li></ul><p><strong>【求める人物像】</strong></p><ul><li>データに基づいた客観的な視点と、ユーザーへの深い共感の両方を持ち合わせている方</li><li>チームワークを大事にし、向上心を持って仕事に励んでいただける方</li><li>自ら提案し、新しい仕事を作っていける方</li><li>なぜその施策を行うのか？という目的を常に問い続け、事業成長にコミットできる方</li><li>主体性、当事者意識のある方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京都港区</span><span class="pill">🏠 ハイブリッドワーク（週2出社必須）</span><span class="pill">💰 400万円-1,000万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.moneyforward.com/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/mf_recruitment_pr/company-profile" target="_blank">📄 会社紹介資料</a><a class="lbtn lbtn-out" href="https://note.moneyforward.com/" target="_blank">📝 公式note</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">イベントマーケティング（リーダー候補）</span><span class="badge badge-blue">ITスタートアップ</span></div>
+  <div class="co-name">株式会社XAION DATA（ザイオンデータ）</div>
+  <div class="co-url"><a href="https://xaiondata.co.jp/" target="_blank">https://xaiondata.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都千代田区麹町2-3-2 半蔵門PREX North 2F</td></tr><tr><th>累計調達額</th><td>4.5億円</td></tr><tr><th>上場区分</th><td>未上場（スタートアップ）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>データの構造化・統合AI技術（特許取得済み）の研究開発及び、HR領域・セールス領域等の事業領域でAIのデータ活用ソリューション・サービスを提供するAIテックスタートアップです！</li><li>圧倒的な量のオープンデータを活用した採用支援・営業支援を行っており、2024年に厚生労働省によって創設された「優良募集情報等提供事業者認定制度」の国内初で唯一の認定事業者（４号）となり、同社のプロダクトの信頼性が非常に高いです。</li><li>①マネジメントポジション積極募集：組織が急拡大しているため、マネージャーや事業責任者といったマネジメントのポジションが数多く生まれています。また次々と新規プロダクトを立ち上げているため、一つの職種に留まらず、新規事業の立ち上げメンバーとして挑戦する機会も豊富。</li><li>②競合を圧倒する「本質的なプロダクトクオリティ」：「いいものを作れば売れる」という思想で技術投資を優先してきたため、プロダクトクオリティが高く、競合からのリプレイス案件でも高い勝率を誇ります。質の高いデータとAIの仕組みにより、解約率（チャーン）も低く、顧客に本質的な価値を提供し続けています。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">米国シリコンバレーのAIベンチャー企業で本社COOと同社グローバルCTOを務めた日本人2名が日本で創業したITスタートアップです。「AI×DATAで世界中の価値を最大化する」というミッションのもと、オープンデータを活用した採用・営業支援プロダクトを展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>米国シリコンバレーのAIベンチャー企業で本社COOと同社グローバルCTOを務めた日本人2名が日本で創業したITスタートアップです。「AI×DATAで世界中の価値を最大化する」というミッションのもと、オープンデータを活用した採用・営業支援プロダクトを展開しています。</p><p>主要なサービスには、人材や企業情報をはじめとしたさまざまな公開情報をもとに、優秀な人材を横断して検索できる、業界最大級の非登録型採用プラットフォーム「AUTOHUNT（オートハント）」や、ウェブ上のオープンなSNSやメディアに掲載された人材および企業の情報を収集・統合し、膨大な情報の中から横断的に企業・キーパーソン検索が可能なAIセールスプラットフォーム「AUTOBOOST」などがあります。</p><p>また、企業が保有するデータを活用したAI/Data Solution事業等、多角的に事業を展開しています。「AUTOHUNT」は大手企業からスタートアップ企業まで、200社を超える実績があります。</p><p>2024年4月25日にシリーズA資金調達の実施し、現在までのデッドファイナンスを含めた累計調達額は4.5億円に達しています。</p><p><strong>実績・受賞歴：</strong></p><ul><li>2025 Forbes JAPAN'S AI 50 選出</li><li>財界 BEST AI 100 選出</li><li>HRテクノロジー大賞「注目スタートアップ賞」 受賞</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 イベントマーケティング（リーダー候補）</div>
+          <div class="job-preview">自社イベント・外部イベントを起点とした集客強化とリード獲得を推進</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【募集背景】</strong><br>当社はHR Techプロダクトの【AUTOHUNT】とSales Techプロダクトの【AUTOBOOST】を展開しており、顧客層も広がりを見せ、マーケティング活動においても大きな転換期を迎えています。日々変動する事業に順応すべく、市場を切り開くためのマーケティングを牽引いただける方を募集しております。</p><p><strong>【仕事内容】</strong><br>自社イベント・外部イベントを起点とした集客強化とリード獲得を推進するイベントマーケターを募集します。展示会・カンファレンス・セミナーの企画から運営、成果創出までを一貫して担い、イベントを通じて事業成長を牽引していただくポジションです。</p><p>今回のポジションでは、BtoB向けの新規リード獲得・商談創出を最大化するためのイベントマーケティング施策推進をお任せします。</p><p><strong>【具体的な業務内容】</strong></p><ul><li>展示会への出展企画・参加・当日の運営</li><li>カンファレンスイベントの企画・運営</li><li>自社セミナー／共催セミナーの企画・運営</li><li>イベント集客施策の企画・実行</li><li>イベントKPIの設計・モニタリング</li><li>イベント後の効果測定・改善提案</li><li>営業・インサイドセールス・他マーケチームとの連携</li></ul><p><strong>【この仕事の魅力】</strong><br>XAION DATAは今年、急拡大・急成長フェーズです。T2D3を目指して売上を上げるためにも、マーケティングの機能は必要不可欠です。技術を磨き続けてきたからこそ、あとは市場をひっくり返すのみ。市場にゲームチェンジをもたらすマーケティングをしませんか。</p><ul><li><strong>革新的なテクノロジーを活用:</strong> AIとオープンデータを駆使した最先端のプロダクトをマーケティング活動で支え、業界をリードするデジタル施策に関わることができる。</li><li><strong>セールスドリブンな戦略:</strong> 営業と密に連携するマーケティング戦略で、ターゲットの精度を高め、ROIの最大化に貢献するチャンスがある。</li><li><strong>社会貢献とビジネス成長:</strong> AI×データで社会的貢献を果たすとともに、急成長するテクノロジーカンパニーでのビジネス成長を加速させる役割を担える。</li><li><strong>多様なプロジェクト経験:</strong> SaaSやAIソリューション、セールスインテリジェンスなど、多彩なプロジェクトに関わり、幅広いデジタルマーケティングスキルを磨くことができる。</li><li><strong>グローバルなインパクト:</strong> 「世界中の価値を最大化する」というミッションのもと、国際的な市場での影響力を持つマーケティング活動に携われる。</li></ul><p><span class='tag tag-must'>MUST</span></p><ul><li>toB／toCマーケティング領域での実務経験（1年以上）</li><li>リード獲得を目的としたイベント、セミナー施策の企画または運営経験（2年以上）</li><li>イベント成果の可視化・振り返りの経験</li><li>イベント関連コンテンツや告知物におけるディレクション経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>HR領域またはSales領域でのドメイン知識</li><li>ターゲット分析および施策選定の戦略設計</li><li>モニタリングにてPDCAを高速で回せる人材</li><li>イベント企画・運営経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>当社のミッション・ビジョン・バリューへ共感いただける方</li><li>社内外の調整業務に強みのある方</li><li>自責思考で事業が拡大できるよう邁進できる方</li><li>答えのないカオスの環境を楽しめる方</li><li>論理的思考で伝えるのが得意な方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京都千代田区</span><span class="pill">🏠 週3出社</span><span class="pill">💰 500万円-1,000万円</span></div>
+      </div>
+    </div>
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 グロースマーケター（マネージャー候補）</div>
+          <div class="job-preview">戦略構築からPR、デジタルマーケティングまで幅広いマーケティング業務</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【仕事内容】</strong><br>最上流の戦略構築から、PRを通じたブランド強化および短期での顧客獲得最大化、SEM・MAなどを通じた流入数の確保、広報担当と連携した事業/プロダクトPR対応等実行したい施策は多岐にわたります。ご経験やご志向に応じてミッションをお任せいたします。</p><p>※下記4つの機能のうち、いずれかをご担当いただきます。</p><p><strong>＜デジタルマーケティング＞</strong></p><ul><li>Web広告運用（リスティング、DSP、ネイティブ広告、SNS広告、動画etc.）</li><li>アフィリエイト、媒体広告メニューの運用</li><li>LPO（ランディングページ改善）</li></ul><p><strong>＜イベントマーケティング＞</strong></p><ul><li>展示会の参加・運営</li><li>カンファレンスイベントの企画・運営</li><li>自社セミナー/共催セミナーの企画・運営</li></ul><p><strong>＜コンテンツマーケティング＞</strong></p><ul><li>SEO（検索エンジン最適化）</li><li>ブログ記事や導入事例などの制作</li><li>ホワイトペーパーの制作・配布</li><li>メルマガの継続的な提供（ナーチャリング）</li></ul><p><strong>＜マーケティングオプス＞</strong></p><ul><li>MA／CRMの運用</li><li>顧客情報の整理とセグメント作成</li><li>プロセス設計</li></ul><p><strong>【この仕事の魅力】</strong></p><ul><li><strong>革新的なテクノロジーを活用:</strong> AIとオープンデータを駆使した最先端のプロダクトをマーケティング活動で支え、業界をリードするデジタル施策に関わることができる。</li><li><strong>データドリブンな戦略:</strong> 自社の独自データベースを活用したマーケティング戦略で、ターゲットの精度を高め、ROIの最大化に貢献するチャンスがある。</li><li><strong>社会貢献とビジネス成長:</strong> AI×データで社会的貢献を果たすとともに、急成長するテクノロジーカンパニーでのビジネス成長を加速させる役割を担える。</li><li><strong>多様なプロジェクト経験:</strong> SaaSやAIソリューション、セールスインテリジェンスなど、多彩なプロジェクトに関わり、幅広いデジタルマーケティングスキルを磨くことができる。</li><li><strong>グローバルなインパクト:</strong> 「世界中の価値を最大化する」というミッションのもと、国際的な市場での影響力を持つマーケティング活動に携われる。</li></ul><p><span class='tag tag-must'>MUST</span></p><ul><li>HR領域またはSales領域でのドメイン知識</li><li>ターゲット分析および施策選定の戦略設計</li><li>モニタリングにてPDCAを高速で回せる人材</li><li>デジタルマーケティングのご経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>リスティング広告の運用経験（インハウス／代理店問わず）</li><li>セールス目線を持ったマーケティング施策が実行できる</li><li>何かしらの高い実績を出したことがある</li></ul><p><strong>【求める人物像】</strong></p><ul><li>泥臭く実績を出す実行力を持っている方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京都千代田区</span><span class="pill">🏠 週3出社</span><span class="pill">💰 600万円-1,000万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://xaiondata.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが齊藤 健一郎 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
